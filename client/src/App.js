@@ -15,7 +15,7 @@ function App() {
   const [country, setCountry] = useState("");
   console.log(formData);
   useEffect(() => {
-    // Fetch data from the server on component mount
+    //will fetch data from the server on component mount
     axios
       .get("http://localhost:8000/api/form")
       .then((response) => {
@@ -42,7 +42,7 @@ function App() {
     axios
       .post("http://localhost:8000/api/form", formData)
       .then(() => {
-        // Refresh the data after successful form submission
+        // will refresh the data after successful form submission
         axios
           .get("http://localhost:8000/api/form")
           .then((response) => {
@@ -61,7 +61,7 @@ function App() {
     setPhoto(e.target.files[0]);
   };
   const exportToCSV = () => {
-    // Export data to CSV format
+    // export data to CSV format
     const csvContent = Object.values(formData).join(",");
     const blob = new Blob([csvContent], { type: "text/csv" });
     const link = document.createElement("a");
@@ -74,7 +74,7 @@ function App() {
     axios
       .get("http://localhost:8000/api/export-csv")
       .then((response) => {
-        // Trigger the download of the CSV file
+        // to download of the CSV file
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");
         link.href = url;
